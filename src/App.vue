@@ -1,17 +1,30 @@
+/*
+header {
+  background-color: #11224d9a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+  margin-bottom: 1px;
+}
+*/
 <template>
-  <header>
-    <h1>
+  <header class=" flex bg-green-800 justify-center font-mono m-1">
+    <h1 class="text-2xl ">
       UG<span>ICA</span>
     </h1>
   </header>
+  <div class="overflow-x-hidden ">
+    <div class="grid grid-cols-1 md: md:grid-cols-5 place-items-center">
+        <div class="md:col-span-4 w-full h-max md: ml-5">
+          <DisplayBabylon :modelURL='modelURL'/>
+        </div>
+      <div class="mr-2 w-full">
+          <ListModels @changemodel='changemodel'/>
+        </div>
+    </div>
 
-  <div class="main-view">
-      <DisplayBabylon :modelURL='modelURL'/>
-      <div>
-        <ListModels @changemodel='changemodel'/>
-      </div>
   </div>
-
 </template>
 
 <script>
@@ -48,38 +61,21 @@ export default {
 </script>
 
 <style>
-*{
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
 
-}
 body{
   font-family: 'montserat', sans-serif;
   background-color: #EEE;
 }
-header {
-  background-color: #11224d9a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  margin-bottom: 5px;
-}
+
 header h1{
   color: #eee;
-  font-size: 28px;
-  font-weight: 300;
-  text-transform: uppercase;
+  /* font-size: 28px; */
+  /* font-weight: 300; */
+  /* text-transform: uppercase; */
 }
 header h1 span{
   color: #FB9B50;
   font-weight: 900;
 }
 
-.main-view{
-     display: flex;
-    /* zoom: 1;  */
-    /* *display: inline; */
-}
 </style>

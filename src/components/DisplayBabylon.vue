@@ -1,9 +1,9 @@
 <template>
-  <div class="cnv" id="cnvid">
-    <canvas />
-    <div>
-      <button class="btn" v-on:click="fullScreen" id="view-fullscreen">Pantalla completa</button>
-    </div>
+  <div class="mr-10 overflow-auto" id="cnvid">
+      <canvas class="w-full max-h-[40rem] "/>
+     <div>
+      <button class="bg-green-400 text-white px-2 m-1 rounded-full" v-on:click="fullScreen" id="view-fullscreen">Pantalla completa</button>
+    </div> 
   </div>
 </template>
 
@@ -146,17 +146,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  canvas {
+  /* canvas {
       overflow: hidden;
-      width: 100%;
-      height: 100%;
+      width: 75%;
+      height: 75%; 
       aspect-ratio: 16 / 9;
       margin: 0;
       padding: 0;
-} 
+}  */
 .cnv{
-  width: 75%;
-  height: 100%;
+  /* width: 75%;
+  /* height: 100%; */
   position: relative;
   padding-right: 25px;
   padding-bottom: 0px;
