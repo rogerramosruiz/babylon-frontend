@@ -46,8 +46,6 @@ export default {
   methods:{
     fullScreen(){
       const canvas = document.querySelector("canvas");
-      // const canvas = document.querySelector(".cnv");
-
       if (canvas.requestFullScreen) {
         canvas.requestFullScreen();
       } else if (canvas.webkitRequestFullScreen) {
