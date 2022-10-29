@@ -96,42 +96,27 @@ export default {
       
         this.engine.displayLoadingUI();
         const {meshes, animationGroups, url} = await SceneLoader.ImportMeshAsync("", '', this.modelURL, scene);       
-        const tamañoDiagonal = 0.1;
-        var mp = meshes.length - 1;
-        var sizeb = meshes[mp].getBoundingInfo().diagonalLength;
-        var scale =  tamañoDiagonal / meshes[mp].getBoundingInfo().diagonalLength ;
-        console.log(scale)
-        if (sizeb < 1){
+        var boundingBox = 1;
+        var size = meshes[boundingBox].getBoundingInfo().diagonalLength;
+        if (size < 1){
           var scl = 0;
           for(var i = 0; i < meshes.length;  i++){
-              meshes[i].scaling.x /= sizeb;
-              meshes[i].scaling.y /= sizeb;
-              meshes[i].scaling.z /= sizeb;
+              meshes[i].scaling.x /= size;
+              meshes[i].scaling.y /= size;
+              meshes[i].scaling.z /= size;
               scl += meshes[i].scaling.x + meshes[i].scaling.y + meshes[i].scaling.z;
           }
-          sizeb =  (scl/mp)/2;
+          size =  (scl/boundingBox)/2;
         }
+        camera.position.x *=  size ;
+        camera.position.y *= size ;
+        camera.position.z *=  size;
 
-        
-        // console.log(meshes[mp].position)
-        // console.log("Scale", meshes[mp].scaling)
-        
-        var size = meshes[mp].getBoundingInfo().boundingBox.extendSize;
-
-        // sizeb = meshes[mp].getBoundingInfo().diagonalLength;
-        // console.log(camera.position);
-        camera.position.x *=  sizeb ;
-        camera.position.y *= sizeb ;
-        camera.position.z *=  sizeb;
-
-        camera.lowerRadiusLimit = sizeb / 1.5;
-        
-        camera.target = meshes[mp].getBoundingInfo()['boundingBox']['centerWorld'];
-
-      // camera.parent = meshes[mp];
-        //https://stackoverflow.com/questions/36285882/how-to-calculate-in-babylon-js-the-camera-position-to-the-loaded-model-intermedd
-        
+        camera.lowerRadiusLimit = size / 1.2;
+        camera.target = meshes[boundingBox].getBoundingInfo()['boundingBox']['centerWorld'];        
+      
         this.engine.hideLoadingUI();
+      
       },
       dispose(){
         this.scene.dispose();
@@ -144,28 +129,5 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  /* canvas {
-      overflow: hidden;
-      width: 75%;
-      height: 75%; 
-      aspect-ratio: 16 / 9;
-      margin: 0;
-      padding: 0;
-}  */
-.cnv{
-  /* width: 75%;
-  /* height: 100%; */
-  position: relative;
-  padding-right: 25px;
-  padding-bottom: 0px;
-}
-
-.btn{
-  bottom: 0;
-  right: 25px;
-  position: absolute;
-  width: 15%;
-}
 </style>

@@ -1,13 +1,3 @@
-/*
-header {
-  background-color: #11224d9a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2px;
-  margin-bottom: 1px;
-}
-*/
 <template>
   <header class=" flex bg-green-800 justify-center font-mono m-1">
     <h1 class="text-2xl ">
@@ -54,7 +44,7 @@ export default {
   },
   data(){
     return {
-      modelURL: process.env.VUE_APP_API_URL+'models/VARIOS/Anquilosaurio.glb'
+      modelURL: process.env.VUE_APP_API_URL+'models/QUÍMICA/Sólido cúbico centrado.glb'
     }
   }
 }
@@ -69,9 +59,6 @@ body{
 
 header h1{
   color: #eee;
-  /* font-size: 28px; */
-  /* font-weight: 300; */
-  /* text-transform: uppercase; */
 }
 header h1 span{
   color: #FB9B50;
